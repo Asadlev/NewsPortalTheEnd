@@ -1,0 +1,12 @@
+{% extends 'newsapp/base.html' %}
+{% load i18n %}
+
+{% block content %}
+<h2>{% trans 'Log in' %}</h2>
+<form method="post" action="{% url 'newsaccount:login' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">{% trans 'Log in' %}</button>
+</form>
+<p>Don't have an account? <a href="{% url 'newsaccount:signup' %}">Sign up</a></p>
+{% endblock %}

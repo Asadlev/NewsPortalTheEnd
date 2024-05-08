@@ -1,0 +1,22 @@
+{% extends 'newsapp/base.html' %}
+{% load static %}
+
+
+{% block title %}
+    <title>Update News</title>
+{% endblock title %}
+{% block style %}
+    <link rel="stylesheet" href="{% static 'newscrudapp/css/style_update_news.css' %}">
+{% endblock style %}
+{% block content %}
+    <div class="container">
+        <h2>Обновление новости</h2>
+        <form action="{% url 'newscrudapp:news_update' new.pk %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="update-btn">Обновить новость</button>
+            <a href="{% url 'newsapp:news_detail' new.id %}" class="cancel-btn">Отмена</a>
+
+        </form>
+    </div>
+{% endblock content %}

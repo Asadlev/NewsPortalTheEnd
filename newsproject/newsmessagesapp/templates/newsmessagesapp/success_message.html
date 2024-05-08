@@ -1,0 +1,18 @@
+{% extends 'newsapp/base.html' %}
+{% load static %}
+
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'newsmessagesapp/css/style_success_message.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+        <h2>Благодарим вас за ваше сообщение!</h2>
+        <p>Мы получили ваше сообщение и рассмотрим его в ближайшее время.</p>
+        <p>Если у вас есть какие-либо дополнительные вопросы, не стесняйтесь обращаться к <a href="{% url 'newsmessagesapp:make_appointment' %}">нам</a>.</p>
+        <p>С уважением,</p>
+        <p>LionNews</p>
+    </div>
+{% endblock %}
+

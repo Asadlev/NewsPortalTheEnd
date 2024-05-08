@@ -1,0 +1,40 @@
+{% extends 'newsapp/base.html' %}
+{% load static %}
+
+{% block content %}
+      <!-- Featured News Slider Start -->
+    <div class="container-fluid pt-5 mb-3">
+        <div class="container">
+            <div class="section-title">
+                <h4 class="m-0 text-uppercase font-weight-bold">Featured News</h4>
+                {% if news %}
+            </div>
+            <div class="row">
+                {% for new in news %}
+                <div class="col-md-6 {% cycle 'order-md-1' 'order-md-2' %}">
+                    <div class="owl-carousel news-carousel carousel-item-4 position-relative">
+                        <div class="position-relative overflow-hidden" style="height: 300px;">
+                            <div class="text-center">
+                                <a href="{% url 'newsapp:news_detail' new.id %}">
+                                    <img class="img-fluid h-100" src="{% static 'newsapp/img/news-700x435-1.jpg' %}" style="object-fit: cover;"></a>
+                                <div class="overlay">
+                                    <div class="mb-2">
+                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                                            href="{% url 'newsapp:news_detail' new.id %}">{{ new.post_type }}</a>
+                                        <a class="text-white" href="{% url 'newsapp:news_detail' new.id %}"><small>{{ new.created_at }}</small></a>
+                                    </div>
+                                    <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="{% url 'newsapp:news_detail' new.id %}">{{ new.title }}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                {% else %}
+                    <h4>Нет Новостей</h4>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <!-- Featured News Slider End -->
+{% endblock content %}

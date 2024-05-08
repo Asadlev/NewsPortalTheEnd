@@ -1,0 +1,31 @@
+{% extends 'newsapp/base.html' %}
+{% load static %}
+
+
+{% block style %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Удаление новости</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="{% static 'newscrudapp/css/style_delete_news.css' %}">
+{% endblock style %}
+
+
+{% block content %}
+<br>
+<br>
+<form method="post">
+    {% csrf_token %}
+    <div class="container">
+        <h2>Вы уверены, что хотите удалить эту новость?</h2>
+        <p>Название новости: {{ new.title }}</p>
+        <p>Описание новости: {{ new.description }}</p>
+        <form action="{% url 'newscrudapp:news_delete' new.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="delete-btn">Удалить</button>
+            <a href="{% url 'newsapp:news_detail' new.id %}" class="cancel-btn">Отмена</a>
+        </form>
+    </div>
+</form>
+
+{% endblock content %}

@@ -1,0 +1,47 @@
+{% extends 'newsapp/base.html' %}
+{% load static %}
+
+
+{% block style %}
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'newsmessagesapp/css/style_appointment.css' %}" rel="stylesheet">
+{% endblock style %}
+
+{% block content %}
+
+    <!-- Contact Start -->
+     <div class="container">
+        <h2>К нам Сообщение</h2>
+        <form action="{% url 'newsmessagesapp:make_appointment' %}" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="client_name">Имя клиента:</label>
+                <input type="text" id="client_name" name="client_name" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Сообщение:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="pub_date">Дата публикации:</label>
+                <input type="date" id="pub_date" name="pub_date" required>
+            </div>
+            <button type="submit">Отправить</button>
+        </form>
+    </div>
+    <!-- Contact End -->
+
+{% endblock content %}

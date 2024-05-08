@@ -1,0 +1,20 @@
+{% extends 'newsapp/base.html' %}
+{% load static %}
+
+
+    {% block title %}
+        <title>Create News</title>
+    {% endblock title %}
+    {% block style %}
+        <link rel="stylesheet" href="{% static 'newscrudapp/css/style_create_news.css' %}">
+    {% endblock style %}
+    {% block content %}
+        <div class="news-form">
+            <h2>Create News</h2>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Create News</button>
+            </form>
+        </div>
+    {% endblock content %}

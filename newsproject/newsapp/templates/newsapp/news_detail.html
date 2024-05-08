@@ -1,0 +1,26 @@
+{% extends 'newsapp/base.html' %}
+{% load static %}
+
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'newsapp/css/style_detail_news.css' %}">
+{% endblock style %}
+
+
+{% block content %}
+<br>
+<br>
+    <div class="container">
+        <h2>{{ new.title }}</h2>
+            <p class="date">Дата публикации: {{ new.created_at }}</p>
+            <p class="description">{{ new.description }}</p>
+            <div class="content">{{ new.text }}</div>
+            {% if user.is_authenticated %}
+                <h4><a href="{% url 'newscrudapp:news_update' new.id %}">Update New</a></h4>
+                <h4><a href="{% url 'newscrudapp:news_delete' new.id %}">Delete New</a></h4>
+            {% endif %}
+    </div>
+
+<br>
+    <script src="{% static 'newsapp/js/scripts.js' %}"></script>
+{% endblock content %}

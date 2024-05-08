@@ -1,0 +1,11 @@
+{% extends 'newsapp/base.html' %}
+
+
+{% block content %}
+<form action="{% url 'newsaccount:signup' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Зарегистрироваться</button>
+</form>
+
+{% endblock content %}
